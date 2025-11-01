@@ -7,7 +7,8 @@ pygame.display.set_caption('Runner')
 clock = pygame.time.Clock()
 running = True
 
-test_surface = pygame.Surface((100, 200))
+testSurface = pygame.Surface((100, 200))
+testSurface.fill('Red')
 
 while running:
     for event in pygame.event.get():
@@ -16,7 +17,7 @@ while running:
             running = False
             exit() # for safety purposes
 
-    screen.blit(test_surface, (0, 0))    
+    screen.blit(testSurface, (0, 0))    
 
     pygame.display.update()
     clock.tick(60)
