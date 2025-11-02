@@ -21,7 +21,7 @@ while running:
             quit()
 
     screen.blit(skySurface, (0, 0))
-    screen.blit(groundSurface, (0, 250))
+    screen.blit(groundSurface, (0, 300))
 
     pygame.display.update()
     clock.tick(60)
