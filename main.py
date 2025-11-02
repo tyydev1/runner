@@ -70,10 +70,11 @@ while running:
     screen.blit(skySurface, (0, 0))
     screen.blit(groundSurface, (0, 300))
     screen.blit(textSurface, (300, 50))
-    
+
     snailRect.x -= 4
     if snailRect.right <= 0: snailRect.left = 800
     screen.blit(snailSurface, snailRect)
+    
     screen.blit(playerSurf, playerRect)
 
     pygame.display.update()
