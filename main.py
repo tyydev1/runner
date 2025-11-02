@@ -8,6 +8,8 @@ from sys import exit
 pygame.init()
 screen = pygame.display.set_mode((800, 400))
 pygame.display.set_caption('Runner')
+
+LOCKED_FPS = 60 # CHANGE THIS LINE FOR FPS 
 running = True
 
 ########################################
@@ -20,7 +22,7 @@ class Debug:
         self.frameCycles = 0
 
     def update(self):
-        if self.numOfFrames != 60:
+        if self.numOfFrames != LOCKED_FPS:
             self.numOfFrames += 1
             return self.numOfFrames
         self.numOfFrames = 0
@@ -43,8 +45,11 @@ testFont = pygame.font.Font('font/Pixeltype.ttf', 50)
 skySurface = pygame.image.load('graphics/Sky.png')
 groundSurface = pygame.image.load('graphics/ground.png')
 textSurface = testFont.render("My game", False, 'Black')
-debug = Debug()
 
+snailSurface = pygame.image.load('graphics/snail/snail1.png')
+snailX = 600
+
+debug = Debug()
 def quit():
     pygame.quit()
     running = False
@@ -62,8 +67,11 @@ while running:
     screen.blit(skySurface, (0, 0))
     screen.blit(groundSurface, (0, 300))
     screen.blit(textSurface, (300, 50))
+    snailX -= 4
+    if snailX < -100: snailX = 800
+    screen.blit(snailSurface, (snailX, 250))
 
     pygame.display.update()
-    clock.tick(60)
+    clock.tick(LOCKED_FPS)
     debug.update()
     print(f"[DEBUG] frame/cycle indicator: {debug.numOfFrames}, {debug.frameCycles}")
