@@ -7,7 +7,7 @@ pygame.display.set_caption('Runner')
 clock = pygame.time.Clock()
 running = True
 
-testSurface = pygame.Surface((100, 200))
+testSurface = pygame.image.load('graphics/Sky.png')
 testSurface.fill('Red')
 
 while running:
