@@ -42,12 +42,15 @@ class Debug:
 clock = pygame.time.Clock()
 testFont = pygame.font.Font('font/Pixeltype.ttf', 50)
 
-skySurface = pygame.image.load('graphics/Sky.png')
-groundSurface = pygame.image.load('graphics/ground.png')
+skySurface = pygame.image.load('graphics/Sky.png').convert()
+groundSurface = pygame.image.load('graphics/ground.png').convert()
 textSurface = testFont.render("My game", False, 'Black')
 
-snailSurface = pygame.image.load('graphics/snail/snail1.png')
-snailX = 600
+snailSurface = pygame.image.load('graphics/snail/snail1.png').convert_alpha()
+snailRect = snailSurface.get_rect(bottomright = (600, 300))
+
+playerSurf = pygame.image.load('graphics/Player/player_walk_1.png').convert_alpha()
+playerRect = playerSurf.get_rect(midbottom = (80, 300))
 
 debug = Debug()
 def quit():
@@ -67,9 +70,11 @@ while running:
     screen.blit(skySurface, (0, 0))
     screen.blit(groundSurface, (0, 300))
     screen.blit(textSurface, (300, 50))
-    snailX -= 4
-    if snailX < -100: snailX = 800
-    screen.blit(snailSurface, (snailX, 250))
+    
+    snailRect.x -= 4
+    if snailRect.right <= 0: snailRect.left = 800
+    screen.blit(snailSurface, snailRect)
+    screen.blit(playerSurf, playerRect)
 
     pygame.display.update()
     clock.tick(LOCKED_FPS)
