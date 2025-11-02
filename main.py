@@ -10,14 +10,17 @@ running = True
 testSurface = pygame.image.load('graphics/Sky.png')
 testSurface.fill('Red')
 
+def quit():
+    pygame.quit()
+    running = False
+    exit() # for safety purposes
+
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            pygame.quit()
-            running = False
-            exit() # for safety purposes
+            quit()
 
-    screen.blit(testSurface, (0, 0))    
+    screen.blit(testSurface, (0, 0))
 
     pygame.display.update()
     clock.tick(60)
