@@ -7,8 +7,7 @@ pygame.display.set_caption('Runner')
 clock = pygame.time.Clock()
 running = True
 
-testSurface = pygame.image.load('graphics/Sky.png')
-testSurface.fill('Red')
+skySurface = pygame.image.load('graphics/Sky.png')
 
 def quit():
     pygame.quit()
@@ -20,7 +19,7 @@ while running:
         if event.type == pygame.QUIT:
             quit()
 
-    screen.blit(testSurface, (0, 0))
+    screen.blit(skySurface, (0, 0))
 
     pygame.display.update()
     clock.tick(60)
