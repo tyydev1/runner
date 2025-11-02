@@ -8,6 +8,7 @@ clock = pygame.time.Clock()
 running = True
 
 skySurface = pygame.image.load('graphics/Sky.png')
+groundSurface = pygame.image.load('graphics/ground.png')
 
 def quit():
     pygame.quit()
@@ -20,6 +21,7 @@ while running:
             quit()
 
     screen.blit(skySurface, (0, 0))
+    screen.blit(groundSurface, (0, 250))
 
     pygame.display.update()
     clock.tick(60)
